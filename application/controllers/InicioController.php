@@ -15,7 +15,7 @@ class InicioController extends CI_Controller {
                 $data['perfil']=$_SESSION["rol"];
                 $conceptos = $this->GastosModel->GetConceptos();
                 $data['conceptos']=json_encode($conceptos);
-                $data['imgData']= $this->ImagenBase64("assets/img/logo.jpg");
+                $data['imgData']= $this->ImagenBase64(base_url()."assets/img/logo.jpg");
                 $data["lista_asistentes"] =json_encode($this->GastosModel->GetListaAsistentes());
                 $data["lista_todas_opciones"] =json_encode($this->GastosModel->GetTodasOpciones());
                 $data["lista_lineas"] =json_encode($this->GastosModel->GetListaLineas());
