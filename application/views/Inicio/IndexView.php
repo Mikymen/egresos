@@ -526,7 +526,7 @@
 
 <div class="container"  data-bind="visible: seccion()=='resumen'">
     <div class="row">
-        <h3>Egresos de MARKDIS</h3>
+        <h3>Egresos</h3>
         <div class="col-md-offset-2 col-md-8">
         <div class="row" >
             <div class="col-sm-4">
