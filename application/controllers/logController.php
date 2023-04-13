@@ -1,21 +1,21 @@
 <?php
-class logController extends CI_Controller {
+class LogController extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
         $this->load->helper('download');              
           
     }
-    public function Index()
+    public function Ls()
     {
         $directorio = isset($_ENV["LOG_DIR"])? $_ENV["LOG_DIR"] : DIRECTORY_SEPARATOR;
         $data['directorio'] = $this->obtener_estructura_directorios($directorio);
-        $this->load->view('Logs/index', $data);
+        $this->load->view('Logs/Index', $data);
     }
-    public function ruta($dir)
+    public function Ruta($dir)
     {
         $data['directorio'] = $this->obtener_estructura_directorios(DIRECTORY_SEPARATOR.urldecode($dir));
-        $this->load->view('Logs/index', $data);
+        $this->load->view('Logs/Index', $data);
 
     }
     function obtener_estructura_directorios($ruta){
@@ -28,11 +28,11 @@ class logController extends CI_Controller {
                 $ruta_completa = $ruta==DIRECTORY_SEPARATOR? $ruta.$archivo  : $ruta . DIRECTORY_SEPARATOR . $archivo;
                 if ($archivo != "." && $archivo != "..") {
                     if (is_dir($ruta_completa)) {
-                        $salida .= "<li><strong><a href='".base_url()."logController/ruta/".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></strong></li>";
+                        $salida .= "<li><strong><a href='".base_url()."logController/Ruta/".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></strong></li>";
                         //$this->obtener_estructura_directorios($ruta_completa);
                     } else {
                         if(substr($archivo,-3)=="txt")
-                            $salida .= "<li><a href='".base_url()."logController/descargar?dir=".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></li>";
+                            $salida .= "<li><a href='".base_url()."logController/Descargar?dir=".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></li>";
                         else
                             $salida .= "<li>" . $archivo . "</li>";
                     }
@@ -44,7 +44,7 @@ class logController extends CI_Controller {
             echo "No es una ruta de directorio valida";
         }
     }
-    public function descargar()
+    public function Descargar()
     {
          $file = DIRECTORY_SEPARATOR.urldecode($_GET['dir']);
         if(!file_exists($file)){ 
