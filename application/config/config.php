@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = '';
-$config['base_url'] = $_ENV["DB_BASE_URL"];
+$config['base_url'] = $_ENV["BASE_URL"];
 
 /*
 |--------------------------------------------------------------------------
@@ -225,7 +225,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 4;
+$config['log_threshold'] = $_ENV["LOG_LEVEL"];
 
 /*
 |--------------------------------------------------------------------------
@@ -236,7 +236,7 @@ $config['log_threshold'] = 4;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = realpath(__DIR__.'/../../public_html/assets/logs').'/';
+$config['log_path'] = $_ENV["LOG_DIR"];
 
 /*
 |--------------------------------------------------------------------------
