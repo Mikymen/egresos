@@ -1,5 +1,5 @@
 <?php
-class LogController extends CI_Controller {
+class Log extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
@@ -10,12 +10,12 @@ class LogController extends CI_Controller {
     {
         $directorio = isset($_ENV["LOG_DIR"])? $_ENV["LOG_DIR"] : DIRECTORY_SEPARATOR;
         $data['directorio'] = $this->obtener_estructura_directorios($directorio);
-        $this->load->view('Logs/Index', $data);
+        $this->load->view('Logs/index', $data);
     }
     public function Ruta($dir)
     {
         $data['directorio'] = $this->obtener_estructura_directorios(DIRECTORY_SEPARATOR.urldecode($dir));
-        $this->load->view('Logs/Index', $data);
+        $this->load->view('Logs/index', $data);
 
     }
     function obtener_estructura_directorios($ruta){
