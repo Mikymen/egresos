@@ -28,11 +28,11 @@ class Log extends CI_Controller {
                 $ruta_completa = $ruta==DIRECTORY_SEPARATOR? $ruta.$archivo  : $ruta . DIRECTORY_SEPARATOR . $archivo;
                 if ($archivo != "." && $archivo != "..") {
                     if (is_dir($ruta_completa)) {
-                        $salida .= "<li><strong><a href='".base_url()."logController/Ruta/".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></strong></li>";
+                        $salida .= "<li><strong><a href='".base_url()."Log/Ruta/".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></strong></li>";
                         //$this->obtener_estructura_directorios($ruta_completa);
                     } else {
                         if(substr($archivo,-3)=="txt")
-                            $salida .= "<li><a href='".base_url()."logController/Descargar?dir=".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></li>";
+                            $salida .= "<li><a href='".base_url()."Log/Descargar?dir=".urlencode(substr($ruta_completa,1))."' >" . $archivo . "</a></li>";
                         else
                             $salida .= "<li>" . $archivo . "</li>";
                     }
